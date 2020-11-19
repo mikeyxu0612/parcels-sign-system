@@ -25,6 +25,10 @@
     包裹管理系統(住址)<br><br>
 </h1>
 <br><br>
+<a href="{{route('addresses.create')}}">新增</a>
+<br>
+<br>
+
 <table>
     <tr>
         <th>編號（主鍵)</th>
@@ -38,7 +42,8 @@
             <td>{{$address ->address }}</td>
             <td>{{$address->B_ID }}</td>
             <td>{{$address->phone }}</td>
-
+            <td><a href="{{route('addresses.show',['id'=>$address->id])}}">显示</a></td>
+            <td><a href="{{route('addresses.edit',['id'=>$address->id])}}">修改</a></td>
         </tr>
     @endforeach
 </table>

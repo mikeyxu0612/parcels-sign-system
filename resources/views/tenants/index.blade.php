@@ -24,6 +24,7 @@
 <h1>
     包裹管理系統(住戶)<br><br>
 </h1>
+<a href="{{route('tenants.create')}}">新增</a>
 <br><br>
 <table>
     <tr>
@@ -38,7 +39,8 @@
             <td>{{$tenant ->T_name}}</td>
             <td>{{$tenant->phone }}</td>
             <td>{{$tenant->D_ID }}</td>
-
+            <td><a href="{{route('tenants.show',['id'=>$tenant->id])}}">显示</a></td>
+            <td><a href="{{route('tenants.edit',['id'=>$tenant->id])}}">修改</a></td>
         </tr>
     @endforeach
 </table>

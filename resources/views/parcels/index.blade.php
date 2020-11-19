@@ -26,6 +26,9 @@
 </h1>
 <br><br>
 <br><br>
+<a href="{{route('parcels.create')}}">新增</a>
+<br>
+<br>
 <table>
     <tr>
         <th>包裹編號（主鍵)</th>
@@ -39,6 +42,8 @@
             <td>{{$parcel->A_ID }}</td>
             <td>{{$parcel->sign }}</td>
             <td>{{$parcel->Sign_proof }}</td>
+            <td><a href="{{route('parcels.show',['id'=>$parcel->id])}}">显示</a></td>
+            <td><a href="{{route('parcels.edit',['id'=>$parcel->id])}}">修改</a></td>
         </tr>
     @endforeach
 </table>

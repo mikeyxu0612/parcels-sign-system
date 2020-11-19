@@ -25,19 +25,24 @@
     包裹管理系統(樓層)<br><br>
 </h1>
 <br><br>
+<a href="{{route('Buildings.create')}}">新增</a>
+<br>
+<br>
 <table>
     <tr>
         <th>棟編號（主鍵)</th>
         <th>棟名</th>
 
     </tr>
-  @foreach( $buildings as $buliding )
+  @foreach( $buildings as $building )
       <tr>
-          <td>{{$buliding->B_ID}} </td>
-          <td>{{$buliding->B_Name }}</td>
+          <td>{{$building->B_ID}} </td>
+          <td>{{$building->B_Name }}</td>
+          <td><a href="{{route('Buildings.show',['id'=>$building->id])}}">显示</a></td>
+          <td><a href="{{route('Buildings.edit',['id'=>$building->id])}}">修改</a></td>
       </tr>
     @endforeach
 </table>
-<a href="/" class="ml-1 underline"><b>返回包裹管理系統主頁面</b></a>
+<a href="/"><b>返回包裹管理系統主頁面</b></a>
 </body>
 </html>

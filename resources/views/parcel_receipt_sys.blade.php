@@ -24,13 +24,13 @@
     <h1>
         包裹管理系統<br><br>
     </h1>
-
-    <a href="/addresses"><b>用戶住址</b></a>
+    <a href="{{ route('addresses.index')}}" class="ml-1 underline">用戶住址</a>
     <br><br>
-    <a href="/Buildings"><b>樓層</b></a>
+    <a href="{{route('Buildings.index')}}" class="ml-1 underline">棟名</a>
     <br><br>
-    <a href="/parcels"><b>包裹</b></a>
+    <a href="{{route('parcels.index')}}" class="ml-1 underline">包裹</a>
     <br><br>
-    <a href="/tenants"><b>住戶</b></a>
+    <a href="{{route('tenants.index')}}" class="ml-1 underline">住户</a>
+    <br><br>
     </body>
 </html>

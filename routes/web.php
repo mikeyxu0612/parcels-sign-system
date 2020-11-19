@@ -21,37 +21,37 @@ Route::get('/', function () {
 });
 
 
-Route::get( 'addresses',[addresscontroller::class,'index']);
+Route::get( 'addresses',[addresscontroller::class,'index'])->name('addresses.index');
 
-Route::get( 'addresses/create',[addresscontroller::class,'create']);
+Route::get( 'addresses/create',[addresscontroller::class,'create'])->name('addresses.create');
 
-Route::get( 'addresses/{id}',[addresscontroller::class,'show'])->where('id','[0-9]+');
+Route::get( 'addresses/{id}',[addresscontroller::class,'show'])->where('id','[0-9]+')->name('addresses.show');
 
-Route::get( 'addresses/{id}/edit',[addresscontroller::class,'edit'])->where('id','[0-9]+');
-
-
-Route::get( 'Buildings',[Buildingscontroller::class,'index']);
-
-Route::get( 'Buildings/create',[Buildingscontroller::class,'create']);
-
-Route::get( 'Buildings/{id}',[Buildingscontroller::class,'show'])->where('id','[0-9]+');
-
-Route::get( 'Buildings/{id}/edit',[Buildingscontroller::class,'edit'])->where('id','[0-9]+');
+Route::get( 'addresses/{id}/edit',[addresscontroller::class,'edit'])->where('id','[0-9]+')->name('addresses.edit');
 
 
-Route::get( 'parcels',[parcelscontroller::class,'index']);
+Route::get( 'Buildings',[Buildingscontroller::class,'index'])->name('Buildings.index');
 
-Route::get( 'parcels/create',[parcelscontroller::class,'create']);
+Route::get( 'Buildings/create',[Buildingscontroller::class,'create'])->name('Buildings.create');
 
-Route::get( 'parcels/{id}',[parcelscontroller::class,'show'])->where('id','[0-9]+');
+Route::get( 'Buildings/{id}',[Buildingscontroller::class,'show'])->where('id','[0-9]+')->name('Buildings.show');
 
-Route::get( 'parcels/{id}/edit',[parcelscontroller::class,'edit'])->where('id','[0-9]+');
+Route::get( 'Buildings/{id}/edit',[Buildingscontroller::class,'edit'])->where('id','[0-9]+')->name('Buildings.edit');
 
 
-Route::get( 'tenants',[tenantscontroller::class,'index']);
+Route::get( 'parcels',[parcelscontroller::class,'index'])->name('parcels.index');
 
-Route::get( 'tenants/create',[tenantscontroller::class,'create']);
+Route::get( 'parcels/create',[parcelscontroller::class,'create'])->name('parcels.create');
 
-Route::get( 'tenants/{id}',[tenantscontroller::class,'show'])->where('id','[0-9]+');
+Route::get( 'parcels/{id}',[parcelscontroller::class,'show'])->where('id','[0-9]+')->name('parcels.show');
 
-Route::get( 'tenants/{id}/edit',[tenantscontroller::class,'edit'])->where('id','[0-9]+');
+Route::get( 'parcels/{id}/edit',[parcelscontroller::class,'edit'])->where('id','[0-9]+')->name('parcels.edit');
+
+
+Route::get( 'tenants',[tenantscontroller::class,'index'])->name('tenants.index');
+
+Route::get( 'tenants/create',[tenantscontroller::class,'create'])->name('tenants.create');
+
+Route::get( 'tenants/{id}',[tenantscontroller::class,'show'])->where('id','[0-9]+')->name('tenants.show');
+
+Route::get( 'tenants/{id}/edit',[tenantscontroller::class,'edit'])->where('id','[0-9]+')->name('tenants.show');
