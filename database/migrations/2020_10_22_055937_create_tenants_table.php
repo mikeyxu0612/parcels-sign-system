@@ -14,12 +14,12 @@ class CreateTenantsTable extends Migration
     public function up()
     {
         Schema::create('tenants', function (Blueprint $table) {
-            $table->id('t_ID')->unsigned()->comment('住户編號');
+            $table->id()->comment('住户編號');
             $table->string('T_name')->comment('住戶姓名');
             $table->string('phone')->comment('連絡電話');
-            $table->foreignId('D_ID')->unsigned()->comment('住址(外部键');
+            $table->foreignId('A_ID')->unsigned()->comment('住址(外部键');
             $table->timestamps();
-            $table->foreign('D_ID')->references('id')->on('addresses')->onDelete('cascade');
+            $table->foreign('A_ID')->references('id')->on('addresses')->onDelete('cascade');
         });
     }
 

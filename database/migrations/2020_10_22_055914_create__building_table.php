@@ -14,7 +14,7 @@ class CreateBuildingTable extends Migration
     public function up()
     {
         Schema::create('Buildings', function (Blueprint $table) {
-            $table->id('B_ID')->unsigned()->comment('棟編號(主鍵)');
+            $table->id()->comment('棟編號(主鍵)');
             $table->string('B_Name')->comment('棟名');
             $table->timestamps();
         });

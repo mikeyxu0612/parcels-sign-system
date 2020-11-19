@@ -12,6 +12,6 @@ class tenant extends Model
     protected  $fillable=[
         'T_name',
         'phone',
-        'D_ID',
+        'A_ID',
     ];
 }

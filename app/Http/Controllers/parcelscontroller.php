@@ -84,7 +84,7 @@ class parcelscontroller extends Controller
         $sign_proof=$this->generateRandomsignproof();
         $random_datetime = Carbon::now()->subMinutes(rand(1, 55));
 
-        $parcel =parcel::created([
+        $parcel =parcel::create([
             'A_ID'=>$A_ID,
             'sign'=>$sign,
             'Sign_proof'=>$sign_proof,

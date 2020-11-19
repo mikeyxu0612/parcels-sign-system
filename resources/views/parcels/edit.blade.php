@@ -24,11 +24,10 @@
 <h1>
     包裹管理系統(修改包裹表單)<br><br>
 </h1>
-包裹編號:{{ $P_ID }}<br/>
+包裹編號:{{ $id }}<br/>
 簽收與否:{{ $sign }}<br/>
-簽收憑證:{{ $sign_proof }}<br/>
-簽收時間:{{ $sign_time }}<br/>
-簽收人住址:{{$A_ID}}<br/>
+簽收憑證:{{ $Sign_proof }}<br/>
+簽收人住址:{{ $A_ID }}<br/>
 <a href="/parcels"><b>返回包裹表單</b></a>
 </body>
 </html>

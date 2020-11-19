@@ -27,7 +27,7 @@ class Buildingscontroller extends Controller
     {
         $B_name=$this->Randomstring();
         $random_datetime = Carbon::now()->subMinutes(rand(1, 55));
-    $building = building::created([
+    $building = building::create([
         'B_name'=>$B_name,
         'created_at'=>$random_datetime,
         'updated_at'=>$random_datetime,

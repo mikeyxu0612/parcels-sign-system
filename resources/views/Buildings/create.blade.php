@@ -24,8 +24,8 @@
 <h1>
     包裹管理系統(新增樓層表單)<br><br>
 </h1>
-棟編號（主鍵):{{ $B_ID }}<br>
-棟名:{{ $B_Name }}<br>
+棟編號（主鍵):{{ $id }}<br>
+棟名:{{ $B_name }}<br>
 <a href="/Buildings"><b>返回樓層表單</b></a>
 </body>
 </html>

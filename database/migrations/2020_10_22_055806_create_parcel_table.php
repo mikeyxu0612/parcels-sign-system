@@ -14,11 +14,11 @@ class CreateParcelTable extends Migration
     public function up()
     {
         Schema::create('parcels', function (Blueprint $table) {
-            $table->id('P_ID')->unsigned()->comment('包裹編號');
+            $table->id()->comment('包裹編號');
             $table->foreignId('A_ID')->unsigned()->comment('住址(外部键)');
             $table->boolean('sign')->comment('簽收與否');
             $table->string('Sign_proof')->comment('簽收憑證');
-            $table->foreign('P_ID')->references('id')->on('addresses')->onDelete('cascade');
+            $table->foreign('A_ID')->references('id')->on('addresses')->onDelete('cascade');
             $table->timestamps();
         });
     }

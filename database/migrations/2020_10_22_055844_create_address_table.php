@@ -14,7 +14,7 @@ class CreateAddressTable extends Migration
     public function up()
     {
         Schema::create('addresses', function (Blueprint $table) {
-            $table->id('A_ID')->unsigned()->comment('住址編號');
+            $table->id()->comment('住址編號');
             $table->string('address')->comment('住址');
             $table->foreignId('B_ID')->comment('棟名(外部鍵)');
             $table->string('phone')->comment('聯絡電話');

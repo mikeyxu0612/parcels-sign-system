@@ -56,12 +56,12 @@ class tenantscontroller extends Controller
         $phone =$first_number . $last_number;
         return $phone;
     }
-    public  function generateRandomDID()
+    public  function generateRandomAID()
     {
         $first_number=$this->generatestring(rand(0,1));
         $second_number=$this->generatestring(rand(0,1));
-        $D_ID=$first_number.$second_number;
-        return $D_ID;
+        $A_ID=$first_number.$second_number;
+        return $A_ID;
     }
     public function index()
     {
@@ -73,13 +73,13 @@ class tenantscontroller extends Controller
 
        $T_name=$this->generateRandomTname();
        $phone=$this->generateRandomphone();
-        $D_ID=$this->generateRandomDID();
+        $A_ID=$this->generateRandomAID();
         $random_datetime = Carbon::now()->subMinutes(rand(1, 55));
 
-        $tenant =tenant::created([
+        $tenant =tenant::create([
             'T_name'=>$T_name,
             'phone'=>$phone,
-            'D_ID'=>$D_ID,
+            'A_ID'=>$A_ID,
         'created_at'=>$random_datetime,
         'updated_at'=>$random_datetime  ]);
         return view('tenants.create',$tenant->toArray());

@@ -23,9 +23,8 @@
 <body class="antialiased">
 <h1>
     包裹管理系統(新增住址表單)<br><br>
-    <a href="addresses/create"><b>新增表單</b></a>
 </h1>
-住址編號:{{ $A_ID }}<br>
+住址編號:{{ $id }}<br>
 住址:{{ $address }}<br>
 棟名(外部鍵):{{ $B_ID }}<br>
 聯絡電話:{{ $phone }}<br>

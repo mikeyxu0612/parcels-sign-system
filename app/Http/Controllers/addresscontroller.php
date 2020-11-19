@@ -51,7 +51,7 @@ class addresscontroller extends Controller
         $random_datetime = Carbon::now()->subMinutes(rand(1, 55));
 
 
-        $addresses  = address::created([
+        $addresses  = address::create([
          'address'=>$address,
             'B_ID'=>$B_ID,
             'phone'=>$phone,
