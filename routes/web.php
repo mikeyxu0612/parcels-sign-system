@@ -54,4 +54,4 @@ Route::get( 'tenants/create',[tenantscontroller::class,'create'])->name('tenants
 
 Route::get( 'tenants/{id}',[tenantscontroller::class,'show'])->where('id','[0-9]+')->name('tenants.show');
 
-Route::get( 'tenants/{id}/edit',[tenantscontroller::class,'edit'])->where('id','[0-9]+')->name('tenants.show');
+Route::get( 'tenants/{id}/edit',[tenantscontroller::class,'edit'])->where('id','[0-9]+')->name('tenants.edit');

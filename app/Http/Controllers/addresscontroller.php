@@ -12,12 +12,10 @@ class addresscontroller extends Controller
     public function generatestring($length =10)
     {
         $numbers='0123456789';
-        $numbersLength=strlen($numbers);
         $randomstring='';
-        for($i=0;$i<$length;$i++)
-        {
-            $randomstring .=$numbers[rand(0,$numbersLength - 1)];
-        }
+        $numbersLength=strlen($numbers);
+        for($i=0;$i<4;$i++)
+            $randomstring .=$numbers[rand(0,$numbersLength-1)];
         return $randomstring;
     }
     public function generateRandomAddress()
