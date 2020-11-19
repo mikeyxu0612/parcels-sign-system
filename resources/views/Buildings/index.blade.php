@@ -5,7 +5,7 @@
     包裹管理系統(樓層)<br><br>
 </h1>
 <br><br>
-<a href="{{route('Buildings.create')}}">新增</a>
+<h1><a href="{{route('Buildings.create')}}">新增</a></h1>
 <br>
 <br>
 <table>

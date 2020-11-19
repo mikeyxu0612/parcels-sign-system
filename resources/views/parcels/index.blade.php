@@ -6,7 +6,8 @@
 </h1>
 <br><br>
 <br><br>
-<a href="{{route('parcels.create')}}">新增</a>
+<h1>
+<a href="{{route('parcels.create')}}">新增</a></h1>
 <br>
 <br>
 <table>

@@ -73,7 +73,7 @@ class tenantscontroller extends Controller
 
        $T_name=$this->generateRandomTname();
        $phone=$this->generateRandomphone();
-        $A_ID=$this->generateRandomAID();
+        $A_ID=rand(0,30);
         $random_datetime = Carbon::now()->subMinutes(rand(1, 55));
 
         $tenant =tenant::create([
