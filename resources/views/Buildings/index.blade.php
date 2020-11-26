@@ -1,14 +1,12 @@
 @extends('app')
 @section('contents')
-<body class="antialiased">
+<body class="antialiased" align="center">
 <h1>
     包裹管理系統(樓層)<br><br>
 </h1>
-<br><br>
-<h1><a href="{{route('Buildings.create')}}">新增</a></h1>
+<p style="font-size: 150%"> <a href="{{route('Buildings.create')}}">新增</a></p>
 <br>
-<br>
-<table>
+<table align="center">
     <tr>
         <th>棟編號（主鍵)</th>
         <th>棟名</th>

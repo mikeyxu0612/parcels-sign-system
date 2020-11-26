@@ -1,26 +1,22 @@
 @extends('app')
 @section('contents')
-<body class="antialiased">
+<body class="antialiased" style="text-align:center;">
 <h1>
     包裹管理系統(住址)<br><br>
 </h1>
-<br><br>
-<h1><a href="{{route('addresses.create')}}">新增</a>
-</h1>
+<p style="font-size: 150%"><a href="{{route('addresses.create')}}">新增</a></p>
 <br>
-<br>
-
-<table>
-    <tr>
-        <th>編號（主鍵)</th>
-        <th>住址</th>
-        <th>棟名（外部鍵)</th>
-        <th>聯絡電話</th>
-        <th>操作1</th>
-        <th>操作2</th>
-    </tr>
+<table align="center" style="text-align:center;">
+    <tr style="text-align:center;">
+        <th >編號（主鍵)</th>
+        <th >住址</th>
+        <th >棟名（外部鍵)</th>
+        <th >聯絡電話</th>
+        <th >操作1</th>
+        <th >操作2</th>
+    </tr >
     @foreach($addresses as $address)
-        <tr>
+        <tr style="text-align:center;">
             <td>{{$address->id }}</td>
             <td>{{$address ->address }}</td>
             <td>{{$address->B_ID }}</td>
@@ -30,6 +26,6 @@
         </tr>
     @endforeach
 </table>
-<a href="/" class="ml-1 underline"><b>返回包裹管理系統主頁面</b></a>
+<a href="/" class="ml-1 underline" style="text-align:center;"><b>返回包裹管理系統主頁面</b></a>
 </body>
 @endsection

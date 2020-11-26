@@ -15,23 +15,22 @@
         </style>
 
         <style>
-            body {
-                font-family: 'Nunito';
+            body{
+                background: antiquewhite;
             }
         </style>
     </head>
-    <body class="antialiased">
-    <h1>
+    <body class="antialiased" align="center">
+    <h1 align="center" style="font-size:500%;">
         包裹管理系統<br><br>
     </h1>
-    <a href="{{ route('addresses.index')}}" class="ml-1 underline">用戶住址</a>
+    <a href="{{ route('addresses.index')}}" class="ml-1 underline" style="font-size:300%;">用戶住址</a>
     <br><br>
-    <a href="{{route('Buildings.index')}}" class="ml-1 underline">棟名</a>
+    <a href="{{route('Buildings.index')}}" class="ml-1 underline" style="font-size:300%;">棟名</a>
     <br><br>
-    <a href="{{route('parcels.index')}}" class="ml-1 underline">包裹</a>
+    <a href="{{route('parcels.index')}}" class="ml-1 underline" style="font-size:300%;">包裹</a>
     <br><br>
-    <a href="{{route('tenants.index')}}" class="ml-1 underline">住户</a>
+    <a href="{{route('tenants.index')}}" class="ml-1 underline" style="font-size:300%;">住户</a>
     <br><br>
     </body>
 </html>
-
