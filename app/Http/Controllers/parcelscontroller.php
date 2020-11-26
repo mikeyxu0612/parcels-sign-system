@@ -104,5 +104,9 @@ class parcelscontroller extends Controller
         $parcel =parcel::findOrFail($id)->toArray();
         return view('parcels.edit',$parcel);
     }
+    public function store()
+    {
+
+    }
 }
 

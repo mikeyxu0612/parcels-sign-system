@@ -94,4 +94,8 @@ class tenantscontroller extends Controller
         $tenant =tenant::findOrFail($id)->toArray();
         return view('tenants.show',$tenant);
     }
+    public function store()
+    {
+
+    }
 }

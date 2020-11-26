@@ -45,4 +45,8 @@ class Buildingscontroller extends Controller
         $building= building::findOrFail($id)->toArray();
         return view('Buildings.edit',$building);
     }
+    public function store()
+    {
+
+    }
 }
