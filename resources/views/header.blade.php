@@ -1,5 +1,5 @@
 <h1>
-    包裹管理系統<br><br>
+    包裹管理系統
 </h1>
 <tr>
 <th><br><a href="{{ route('addresses.index')}}" class="ml-1 underline">用戶住址</a><br></th>

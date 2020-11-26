@@ -71,4 +71,8 @@ public function show($id)
     return view('addresses.show',$address);
 }
 
+public function store()
+{
+
+}
 }
