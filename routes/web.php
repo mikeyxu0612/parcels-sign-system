@@ -29,6 +29,10 @@ Route::get( 'addresses/{id}',[addresscontroller::class,'show'])->where('id','[0-
 
 Route::get( 'addresses/{id}/edit',[addresscontroller::class,'edit'])->where('id','[0-9]+')->name('addresses.edit');
 
+Route::post('addresses/store',[addresscontroller::class,'store'])->name('addresses.store');
+
+Route::patch('addresses/{id}/update',[addresscontroller::class,'update'])->where('id','[0-9]+')->name('addresses.update');
+
 
 Route::get( 'Buildings',[Buildingscontroller::class,'index'])->name('Buildings.index');
 
@@ -37,6 +41,8 @@ Route::get( 'Buildings/create',[Buildingscontroller::class,'create'])->name('Bui
 Route::get( 'Buildings/{id}',[Buildingscontroller::class,'show'])->where('id','[0-9]+')->name('Buildings.show');
 
 Route::get( 'Buildings/{id}/edit',[Buildingscontroller::class,'edit'])->where('id','[0-9]+')->name('Buildings.edit');
+
+Route::post('Buildings/store',[Buildingscontroller::class,'store'])->name('Buildings.store');
 
 
 Route::get( 'parcels',[parcelscontroller::class,'index'])->name('parcels.index');
@@ -47,6 +53,8 @@ Route::get( 'parcels/{id}',[parcelscontroller::class,'show'])->where('id','[0-9]
 
 Route::get( 'parcels/{id}/edit',[parcelscontroller::class,'edit'])->where('id','[0-9]+')->name('parcels.edit');
 
+Route::post('parcels/store',[parcelscontroller::class,'store'])->name('parcels.store');
+
 
 Route::get( 'tenants',[tenantscontroller::class,'index'])->name('tenants.index');
 
@@ -55,3 +63,5 @@ Route::get( 'tenants/create',[tenantscontroller::class,'create'])->name('tenants
 Route::get( 'tenants/{id}',[tenantscontroller::class,'show'])->where('id','[0-9]+')->name('tenants.show');
 
 Route::get( 'tenants/{id}/edit',[tenantscontroller::class,'edit'])->where('id','[0-9]+')->name('tenants.edit');
+
+Route::post('tenants/store',[tenantscontroller::class,'store'])->name('tenants.store');

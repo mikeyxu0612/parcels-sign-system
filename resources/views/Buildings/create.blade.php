@@ -4,7 +4,7 @@
 <h1>
     包裹管理系統(新增樓層表單)<br><br>
 </h1>
-{!! Form::open(['url'=>'buildings/store']) !!}
+{!! Form::open(['url'=>'Buildings/store']) !!}
 <div class="form-group">
     {!! Form::label('B_Name','棟名:') !!}
     {!! Form::text('B_Name',null,['class'=>'form-control']) !!}

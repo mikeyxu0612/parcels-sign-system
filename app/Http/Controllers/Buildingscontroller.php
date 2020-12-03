@@ -25,15 +25,15 @@ class Buildingscontroller extends Controller
     }
     public function create()
     {
-        $B_name=$this->Randomstring();
+      /*  $B_name=$this->Randomstring();
         $random_datetime = Carbon::now()->subMinutes(rand(1, 55));
     $building = building::create([
         'B_name'=>$B_name,
         'created_at'=>$random_datetime,
         'updated_at'=>$random_datetime,
     ]);
-
-        return view( 'Buildings.create',$building->toArray());
+*/
+        return view( 'Buildings.create');
     }
     public  function show($id)
     {
@@ -45,8 +45,14 @@ class Buildingscontroller extends Controller
         $building= building::findOrFail($id)->toArray();
         return view('Buildings.edit',$building);
     }
-    public function store()
+    public function store(Request $request)
     {
-
+     $B_Name=$request->input('B_Name');
+     $random_datetime = Carbon::now()->subMinutes(rand(1, 55));
+        building::create([
+            'B_name'=>$B_Name,
+            'created_at'=>$random_datetime,
+            'updated_at'=>$random_datetime]);
+        return redirect('Buildings');
     }
 }

@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class address extends Model
 {
     use HasFactory;
-    protected  $table="addresses";
+   /* protected  $table="addresses";*/
     protected  $fillable=[
         'address',
         'B_ID',
         'phone',
+        'created_at',
+        'updated_at'
     ];
-
 }

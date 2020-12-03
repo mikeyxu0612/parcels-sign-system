@@ -71,7 +71,7 @@ class tenantscontroller extends Controller
     public function create()
     {
 
-       $T_name=$this->generateRandomTname();
+       /*$T_name=$this->generateRandomTname();
        $phone=$this->generateRandomphone();
         $A_ID=rand(0,30);
         $random_datetime = Carbon::now()->subMinutes(rand(1, 55));
@@ -81,8 +81,8 @@ class tenantscontroller extends Controller
             'phone'=>$phone,
             'A_ID'=>$A_ID,
         'created_at'=>$random_datetime,
-        'updated_at'=>$random_datetime  ]);
-        return view('tenants.create',$tenant->toArray());
+        'updated_at'=>$random_datetime  ]);*/
+        return view('tenants.create');
     }
     public function edit($id)
     {
@@ -94,8 +94,20 @@ class tenantscontroller extends Controller
         $tenant =tenant::findOrFail($id)->toArray();
         return view('tenants.show',$tenant);
     }
-    public function store()
+    public function store(Request $request)
     {
+     $T_name=$request->input('T_name');
+     $phone=$request->input('phone');
+     $A_ID=$request->input('A_ID');
+     $random_datetime = Carbon::now()->subMinutes(rand(1, 55));
 
+     tenant::create([
+         'T_name'=>$T_name,
+         'phone'=>$phone,
+         'A_ID'=>$A_ID,
+         'created_at'=>$random_datetime,
+         'updated_at'=>$random_datetime,
+     ]);
+        return redirect('tenants');
     }
 }

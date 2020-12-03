@@ -7,11 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class parcel extends Model
 {
     use HasFactory;
-    protected  $table="parcels";
+ /*   protected  $table="parcels";*/
     protected  $fillable=[
         'A_ID',
         'sign',
         'sign_time',
         'Sign_proof',
+        'created_at',
+        'updated_at'
     ];
 }

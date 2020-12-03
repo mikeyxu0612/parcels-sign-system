@@ -42,7 +42,7 @@ class addresscontroller extends Controller
     }
     public function create()
     {
-
+/*
        $address=$this->generateRandomAddress();
        $B_ID=$this->generateRandomBID();
         $phone=$this->generateRandomphone();
@@ -56,8 +56,8 @@ class addresscontroller extends Controller
             'created_at'=>$random_datetime,
             'updated_at'=>$random_datetime
 
-        ]);
-        return view( 'addresses.create',$addresses->toArray());
+        ]);*/
+        return view( 'addresses.create');
     }
   public function edit($id)
 {
@@ -71,8 +71,31 @@ public function show($id)
     return view('addresses.show',$address);
 }
 
-public function store()
+public function store(Request $request)
 {
 
+ $address=$request->input('address');
+ $B_ID=$request->input('B_ID');
+ $phone=$request->input('phone');
+ $random_datetime = Carbon::now()->subMinutes(rand(1,55));
+
+ address::create([
+     'address'=>$address,
+     'B_ID'=>$B_ID,
+     'phone'=>$phone,
+     'created_at'=>$random_datetime,
+     'updated_at'=>$random_datetime
+ ]);
+return redirect('addresses');
+}
+public function update($id,Request $request)
+{
+
+ $address = address::findOrFail($id);
+ $address->address=$request->input('address');
+ $address->B_ID=$request->input('B_ID');
+ $address->phone=$request->input('phone');
+$address->save();
+return 'OK';
 }
 }
