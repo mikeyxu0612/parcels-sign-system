@@ -14,6 +14,7 @@
         <th>住址(外部鍵)</th>
         <th>操作1</th>
         <th>操作2</th>
+        <th>操作3</th>
     </tr>
     @foreach($tenants as $tenant)
         <tr>
@@ -23,6 +24,13 @@
             <td>{{$tenant->A_ID }}</td>
             <td><a href="{{route('tenants.show',['id'=>$tenant->id])}}">显示</a></td>
             <td><a href="{{route('tenants.edit',['id'=>$tenant->id])}}">修改</a></td>
+            <td>
+                <form action="{{ url('/tenants/delete', ['id' => $tenant->id]) }}" method="post">
+                    <input class="btn btn-default" type="submit" value="刪除" />
+                    @method('delete')
+                    @csrf
+                </form>
+            </td>
         </tr>
     @endforeach
 </table>

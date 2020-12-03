@@ -23,6 +23,13 @@
             <td>{{$parcel->Sign_proof }}</td>
             <td><a href="{{route('parcels.show',['id'=>$parcel->id])}}">显示</a></td>
             <td><a href="{{route('parcels.edit',['id'=>$parcel->id])}}">修改</a></td>
+            <td>
+                <form action="{{ url('/parcels/delete', ['id' => $parcel->id]) }}" method="post">
+                    <input class="btn btn-default" type="submit" value="刪除" />
+                    @method('delete')
+                    @csrf
+                </form>
+            </td>
         </tr>
     @endforeach
 </table>

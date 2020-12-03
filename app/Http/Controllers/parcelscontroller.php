@@ -120,5 +120,23 @@ class parcelscontroller extends Controller
         ]);
         return redirect('parcels');
     }
+
+    public function update($id,Request $request)
+    {
+        $parcel = parcel::findOrFail($id);
+
+        $parcel->sign=$request->input('sign');
+        $parcel->Sign_proof=$request->input('Sign_proof');
+        $parcel->A_ID=$request->input('A_ID');
+        $parcel->save();
+        return redirect('parcels');
+
+    }
+    public function destroy($id)
+    {
+       $parcel = parcel::findOrFail($id);
+        $parcel->delete();
+        return redirect('parcels');
+    }
 }
 

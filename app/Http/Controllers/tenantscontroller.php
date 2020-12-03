@@ -110,4 +110,22 @@ class tenantscontroller extends Controller
      ]);
         return redirect('tenants');
     }
+
+    public function update($id,Request $request)
+    {
+        $tenant = tenant::findOrFail($id);
+
+        $tenant->T_name=$request->input('T_name');
+        $tenant->phone=$request->input('phone');
+        $tenant->A_ID=$request->input('A_ID');
+        $tenant->save();
+        return redirect('tenants');
+
+    }
+    public function destroy($id)
+    {
+        $tenant= tenant::findOrFail($id);
+        $tenant->delete();
+        return redirect('tenants');
+    }
 }

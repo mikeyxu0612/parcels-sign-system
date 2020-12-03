@@ -12,6 +12,7 @@
         <th>棟名</th>
         <th>操作1</th>
         <th>操作2</th>
+        <th>操作3</th>
 
     </tr>
   @foreach( $buildings as $building )
@@ -20,6 +21,13 @@
           <td>{{$building->B_Name }}</td>
           <td><a href="{{route('Buildings.show',['id'=>$building->id])}}">显示</a></td>
           <td><a href="{{route('Buildings.edit',['id'=>$building->id])}}">修改</a></td>
+          <td>
+              <form action="{{ url('/Buildings/delete', ['id' => $building->id]) }}" method="post">
+                  <input class="btn btn-default" type="submit" value="刪除" />
+                  @method('delete')
+                  @csrf
+              </form>
+          </td>
       </tr>
     @endforeach
 </table>
