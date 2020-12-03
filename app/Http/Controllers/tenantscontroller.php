@@ -6,6 +6,7 @@ use App\Models\parcel;
 use App\Models\tenant;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class tenantscontroller extends Controller
 {
@@ -65,7 +66,16 @@ class tenantscontroller extends Controller
     }
     public function index()
     {
-        $tenants =tenant::all()->sortBy('id',SORT_ASC);
+        /*$tenants =tenant::all()->sortBy('id',SORT_ASC);*/
+        $tenants =DB::table('tenants')
+            ->join('addresses','tenants.id','=','addresses.id')
+            ->orderBy('tenants.id')
+            ->select(
+                'tenants.id',
+                'tenants.T_name',
+                'tenants.phone',
+                'addresses.address as ada'
+            )->get();
         return view('tenants.index',['tenants'=>$tenants]);
     }
     public function create()

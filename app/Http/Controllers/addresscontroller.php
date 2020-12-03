@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\address;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class addresscontroller extends Controller
 {
@@ -37,7 +38,17 @@ class addresscontroller extends Controller
     }
     public  function index()
     {
-        $addresses = address::all()->sortBy('id',SORT_ASC);
+
+        /*$addresses = address::all()->sortBy('id',SORT_ASC);*/
+        $addresses=DB::table('addresses')
+            ->join('buildings','addresses.B_ID','=','buildings.id')
+            ->orderBy('addresses.id')
+            ->select(
+                'addresses.id',
+                'addresses.address',
+                'buildings.B_Name as Bname',
+                'addresses.phone'
+            )->get();
         return view( ' addresses.index',['addresses'=>$addresses]);
     }
     public function create()

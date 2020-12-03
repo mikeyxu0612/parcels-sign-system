@@ -21,7 +21,7 @@
             <td>{{$tenant->id }}</td>
             <td>{{$tenant ->T_name}}</td>
             <td>{{$tenant->phone }}</td>
-            <td>{{$tenant->A_ID }}</td>
+            <td>{{$tenant->ada }}</td>
             <td><a href="{{route('tenants.show',['id'=>$tenant->id])}}">显示</a></td>
             <td><a href="{{route('tenants.edit',['id'=>$tenant->id])}}">修改</a></td>
             <td>

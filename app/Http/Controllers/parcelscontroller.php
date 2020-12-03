@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\parcel;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class parcelscontroller extends Controller
 {
@@ -74,7 +75,16 @@ class parcelscontroller extends Controller
 
     public  function index()
     {
-        $parcels =parcel::all()->sortBy('id',SORT_ASC);
+       /* $parcels =parcel::all()->sortBy('id',SORT_ASC);*/
+        $parcels =DB::table('parcels')
+            ->join('addresses','parcels.id','=','addresses.id')
+            ->orderBy('parcels.id')
+            ->select(
+                'parcels.id',
+                'addresses.address as ada',
+                'parcels.sign',
+                'parcels.Sign_proof'
+            )->get();
         return view( 'parcels.index',['parcels'=>$parcels]);
     }
     public function create()
