@@ -92,10 +92,18 @@ public function update($id,Request $request)
 {
 
  $address = address::findOrFail($id);
+
  $address->address=$request->input('address');
  $address->B_ID=$request->input('B_ID');
  $address->phone=$request->input('phone');
 $address->save();
-return 'OK';
+return redirect('addresses');
 }
+public function destroy($id)
+{
+    $address = address::findOrFail($id);
+    $address->delete();
+    return redirect('addresses');
+}
+
 }

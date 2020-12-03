@@ -14,6 +14,7 @@
         <th >聯絡電話</th>
         <th >操作1</th>
         <th >操作2</th>
+        <th >操作3</th>
     </tr >
     @foreach($addresses as $address)
         <tr style="text-align:center;">
@@ -23,6 +24,13 @@
             <td>{{$address->phone }}</td>
             <td><a href="{{route('addresses.show',['id'=>$address->id])}}">显示</a></td>
             <td><a href="{{route('addresses.edit',['id'=>$address->id])}}">修改</a></td>
+            <td>
+                <form action="{{ url('/addresses/delete', ['id' => $address->id]) }}" method="post">
+                    <input class="btn btn-default" type="submit" value="刪除" />
+                    @method('delete')
+                    @csrf
+                </form>
+            </td>
         </tr>
     @endforeach
 </table>

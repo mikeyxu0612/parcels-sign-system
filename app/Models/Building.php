@@ -10,7 +10,7 @@ class building extends Model
     use HasFactory;
    /* protected  $table="Buildings";*/
     protected  $fillable=[
-        'B_name',
+        'B_Name',
          'created_at',
         'updated_at'
     ];

@@ -31,7 +31,9 @@ Route::get( 'addresses/{id}/edit',[addresscontroller::class,'edit'])->where('id'
 
 Route::post('addresses/store',[addresscontroller::class,'store'])->name('addresses.store');
 
-Route::patch('addresses/{id}/update',[addresscontroller::class,'update'])->where('id','[0-9]+')->name('addresses.update');
+Route::patch('addresses/update/{id}',[addresscontroller::class,'update'])->where('id','[0-9]+')->name('addresses.update');
+
+Route::delete('addresses/delete/{id}',[addresscontroller::class, 'destroy'])->where('id','[0-9]+')->name('addresses.destroy');
 
 
 Route::get( 'Buildings',[Buildingscontroller::class,'index'])->name('Buildings.index');
@@ -44,6 +46,10 @@ Route::get( 'Buildings/{id}/edit',[Buildingscontroller::class,'edit'])->where('i
 
 Route::post('Buildings/store',[Buildingscontroller::class,'store'])->name('Buildings.store');
 
+Route::patch('Buildings/update/{id}',[Buildingscontroller::class,'update'])->where('id','[0-9]+')->name('Buildings.update');
+
+Route::delete('Buildings/delete/{id}',[Buildingscontroller::class, 'destroy'])->where('id','[0-9]+')->name('Buildings.destroy');
+
 
 Route::get( 'parcels',[parcelscontroller::class,'index'])->name('parcels.index');
 
@@ -55,6 +61,10 @@ Route::get( 'parcels/{id}/edit',[parcelscontroller::class,'edit'])->where('id','
 
 Route::post('parcels/store',[parcelscontroller::class,'store'])->name('parcels.store');
 
+Route::patch('parcels/update/{id}',[parcelscontroller::class,'update'])->where('id','[0-9]+')->name('parcels.update');
+
+Route::delete('parcels/delete/{id}',[parcelscontroller::class, 'destroy'])->where('id','[0-9]+')->name('parcels.destroy');
+
 
 Route::get( 'tenants',[tenantscontroller::class,'index'])->name('tenants.index');
 
@@ -65,3 +75,7 @@ Route::get( 'tenants/{id}',[tenantscontroller::class,'show'])->where('id','[0-9]
 Route::get( 'tenants/{id}/edit',[tenantscontroller::class,'edit'])->where('id','[0-9]+')->name('tenants.edit');
 
 Route::post('tenants/store',[tenantscontroller::class,'store'])->name('tenants.store');
+
+Route::patch('tenants/update/{id}',[tenantscontroller::class,'update'])->where('id','[0-9]+')->name('tenants.update');
+
+Route::delete('tenants/delete/{id}',[tenantscontroller::class, 'destroy'])->where('id','[0-9]+')->name('tenants.destroy');

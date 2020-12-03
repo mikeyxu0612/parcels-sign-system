@@ -50,9 +50,23 @@ class Buildingscontroller extends Controller
      $B_Name=$request->input('B_Name');
      $random_datetime = Carbon::now()->subMinutes(rand(1, 55));
         building::create([
-            'B_name'=>$B_Name,
+            'B_Name'=>$B_Name,
             'created_at'=>$random_datetime,
             'updated_at'=>$random_datetime]);
+        return redirect('Buildings');
+    }
+    public function update($id,Request $request)
+    {
+        $building = building::findOrFail($id);
+
+        $building->B_Name=$request->input('B_Name');
+        $building->save();
+        return redirect('Buildings');
+    }
+    public function destroy($id)
+    {
+        $Building = building::findOrFail($id);
+        $Building->delete();
         return redirect('Buildings');
     }
 }

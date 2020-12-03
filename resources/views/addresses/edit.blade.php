@@ -5,7 +5,7 @@
     包裹管理系統(修改住址表單)<br><br>
 </h1>
 住址編號:{{ $id }}<br>
-{!! Form::open(['url'=>'addresses/update'.$id,'method'=>'patch']) !!}
+{!! Form::open(['url'=>'addresses/update/' .$id, 'method'=>'patch']) !!}
 <div class="form-group">
     {!! Form::label('address','住址:') !!}
     {!! Form::text('address',$address,['class'=>'form-control']) !!}
