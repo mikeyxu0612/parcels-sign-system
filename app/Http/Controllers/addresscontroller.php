@@ -68,11 +68,21 @@ class addresscontroller extends Controller
             'updated_at'=>$random_datetime
 
         ]);*/
-        return view( 'addresses.create');
+        $buildings=DB::table('buildings')
+            ->select('buildings.id','buildings.B_Name')
+            ->orderBy('buildings.id','asc')
+            ->get();
+
+        $data= [];
+        foreach ($buildings as $building)
+        {
+            $data[$building->id]=$building->B_Name;
+        }
+        return view( 'addresses.create',['buildings' =>$data]);
     }
   public function edit($id)
 {
-$address = address::findOrFail($id)->toArray();
+$address = address::findOrFail($id);
 return view('addresses.edit',$address);
  }
 
