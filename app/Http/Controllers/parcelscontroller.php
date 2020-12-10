@@ -90,18 +90,7 @@ class parcelscontroller extends Controller
 
     public function create()
     {
-       /* $A_ID=$this->generateRandomAID();
-        $sign=$this->generateRandomsign();
-        $sign_proof=$this->generateRandomsignproof();
-        $random_datetime = Carbon::now()->subMinutes(rand(1, 55));
-
-        $parcel =parcel::create([
-            'A_ID'=>$A_ID,
-            'sign'=>$sign,
-            'Sign_proof'=>$sign_proof,
-            'created_at'=>$random_datetime,
-            'updated_at'=>$random_datetime,
-        ]);*/
+        
         return view('parcels/create');
     }
     public  function show($id)
@@ -112,8 +101,8 @@ class parcelscontroller extends Controller
 
     public  function edit($id)
     {
-        $parcel =parcel::findOrFail($id)->toArray();
-        return view('parcels.edit',$parcel);
+        $parcel =parcel::findOrFail($id);
+        return view('parcels.edit',['parcel'=>$parcel]);
     }
     public function store(Request $request)
     {

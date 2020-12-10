@@ -38,8 +38,6 @@ class addresscontroller extends Controller
     }
     public  function index()
     {
-
-        /*$addresses = address::all()->sortBy('id',SORT_ASC);*/
         $addresses=DB::table('addresses')
             ->join('buildings','addresses.B_ID','=','buildings.id')
             ->orderBy('addresses.id')
@@ -53,21 +51,6 @@ class addresscontroller extends Controller
     }
     public function create()
     {
-/*
-       $address=$this->generateRandomAddress();
-       $B_ID=$this->generateRandomBID();
-        $phone=$this->generateRandomphone();
-        $random_datetime = Carbon::now()->subMinutes(rand(1, 55));
-
-
-        $addresses  = address::create([
-         'address'=>$address,
-            'B_ID'=>$B_ID,
-            'phone'=>$phone,
-            'created_at'=>$random_datetime,
-            'updated_at'=>$random_datetime
-
-        ]);*/
         $buildings=DB::table('buildings')
             ->select('buildings.id','buildings.B_Name')
             ->orderBy('buildings.id','asc')
@@ -78,12 +61,46 @@ class addresscontroller extends Controller
         {
             $data[$building->id]=$building->B_Name;
         }
-        return view( 'addresses.create',['buildings' =>$data]);
+
+        $addresses=DB::table('addresses')
+            ->select('addresses.id','addresses.address')
+            ->orderBy('addresses.id','asc')
+            ->get();
+
+        $datas =[];
+        foreach ($addresses as $address)
+        {
+            $datas[$address->id]=$address->address;
+        }
+        return view( 'addresses.create',['buildings' =>$data],['addresses'=>$datas]);
     }
   public function edit($id)
 {
+    $buildings=DB::table('buildings')
+        ->select('buildings.id','buildings.B_Name')
+        ->orderBy('buildings.id','asc')
+        ->get();
+
+    $data=[];
+    foreach ($buildings as $building)
+    {
+        $data[$building->id] = $building->B_Name;
+    }
+
+    $addresses=DB::table('addresses')
+        ->select('addresses.id','addresses.address')
+        ->orderBy('addresses.id','asc')
+        ->get();
+
+    $datas =[];
+    foreach ($addresses as $addresss)
+    {
+        $datas[$addresss->id]=$addresss->address;
+    }
+
 $address = address::findOrFail($id);
-return view('addresses.edit',$address);
+
+return view('addresses.edit',['address'=>$address,'buildings'=>$data,'addresses'=>$datas]);
  }
 
 public function show($id)

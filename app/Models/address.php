@@ -29,4 +29,13 @@ class address extends Model
                 'buildings.B_Name as Bname',
                 'addresses.phone');
     }
+
+   /* public function scopeSenior($query)
+    {
+        $query->join()
+            ->where()
+            ->orderBy()
+            ->select(
+               );
+    }*/
 }

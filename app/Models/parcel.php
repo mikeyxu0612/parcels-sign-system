@@ -16,4 +16,14 @@ class parcel extends Model
         'created_at',
         'updated_at'
     ];
+    public function scopeAllData($query)
+    {
+        $query  ->orderBy('parcels.id')
+            ->select(
+                'parcels.id',
+                'parcels.A_ID',
+                'parcels.sign',
+                'parcels.Sign_proof'
+            );
+    }
 }

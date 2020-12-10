@@ -16,4 +16,14 @@ class tenant extends Model
         'created_at',
         'updated_at'
     ];
+    public function scopeAllData($query)
+    {
+        $query ->orderBy('tenants.id')
+            ->select(
+                'tenants.id',
+                'tenants.T_name',
+                'tenants.phone',
+                'tenants.A_ID'
+            );
+    }
 }

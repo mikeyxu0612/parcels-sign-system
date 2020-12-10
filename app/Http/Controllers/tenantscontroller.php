@@ -95,12 +95,12 @@ class tenantscontroller extends Controller
     }
     public function edit($id)
     {
-        $tenant =tenant::findOrFail($id)->toArray();
-        return view('tenants.edit',$tenant);
+        $tenant =tenant::findOrFail($id);
+        return view('tenants.edit',['tenant'=>$tenant]);
     }
     public function show($id)
     {
-        $tenant =tenant::findOrFail($id)->toArray();
+        $tenant =tenant::findOrFail($id);
         return view('tenants.show',$tenant);
     }
     public function store(Request $request)
