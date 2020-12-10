@@ -18,7 +18,7 @@
     @foreach($parcels as $parcel)
         <tr>
             <td>{{$parcel->id }}</td>
-            <td>{{$parcel->ada }}</td>
+            <td>{{$parcel->A_ID}}</td>
             <td>{{$parcel->sign }}</td>
             <td>{{$parcel->Sign_proof }}</td>
             <td><a href="{{route('parcels.show',['id'=>$parcel->id])}}">显示</a></td>

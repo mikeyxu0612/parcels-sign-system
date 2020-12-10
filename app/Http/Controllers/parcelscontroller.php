@@ -73,20 +73,21 @@ class parcelscontroller extends Controller
         return $sign;
     }
 
-    public  function index()
+
+        public  function index()
     {
-       /* $parcels =parcel::all()->sortBy('id',SORT_ASC);*/
+        /* $parcels =parcel::all()->sortBy('id',SORT_ASC);*/
         $parcels =DB::table('parcels')
-            ->join('addresses','parcels.id','=','addresses.id')
             ->orderBy('parcels.id')
             ->select(
                 'parcels.id',
-                'addresses.address as ada',
+                'parcels.A_ID',
                 'parcels.sign',
                 'parcels.Sign_proof'
             )->get();
         return view( 'parcels.index',['parcels'=>$parcels]);
     }
+
     public function create()
     {
        /* $A_ID=$this->generateRandomAID();

@@ -68,13 +68,12 @@ class tenantscontroller extends Controller
     {
         /*$tenants =tenant::all()->sortBy('id',SORT_ASC);*/
         $tenants =DB::table('tenants')
-            ->join('addresses','tenants.id','=','addresses.id')
             ->orderBy('tenants.id')
             ->select(
                 'tenants.id',
                 'tenants.T_name',
                 'tenants.phone',
-                'addresses.address as ada'
+                'tenants.A_ID'
             )->get();
         return view('tenants.index',['tenants'=>$tenants]);
     }
