@@ -51,6 +51,7 @@ Route::patch('Buildings/update/{id}',[Buildingscontroller::class,'update'])->whe
 Route::delete('Buildings/delete/{id}',[Buildingscontroller::class, 'destroy'])->where('id','[0-9]+')->name('Buildings.destroy');
 
 
+
 Route::get( 'parcels',[parcelscontroller::class,'index'])->name('parcels.index');
 
 Route::get( 'parcels/create',[parcelscontroller::class,'create'])->name('parcels.create');
