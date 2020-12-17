@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\address;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
+/*use Illuminate\Http\Request;*/
 use Illuminate\Support\Facades\DB;
-
+use App\Http\Requests\addressRequest;
 class addresscontroller extends Controller
 {
     //
@@ -47,6 +47,7 @@ class addresscontroller extends Controller
                 'buildings.B_Name as Bname',
                 'addresses.phone'
             )->get();
+
         return view( ' addresses.index',['addresses'=>$addresses]);
     }
     public function create()
@@ -109,7 +110,7 @@ public function show($id)
     return view('addresses.show',$address);
 }
 
-public function store(Request $request)
+public function store(addressRequest $request)
 {
 
  $address=$request->input('address');
@@ -126,7 +127,7 @@ public function store(Request $request)
  ]);
 return redirect('addresses');
 }
-public function update($id,Request $request)
+public function update($id,addressRequest $request)
 {
 
  $address = address::findOrFail($id);

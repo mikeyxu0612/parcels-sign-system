@@ -25,10 +25,14 @@ class addressRequest extends FormRequest
     {
         return [
             //
-
-
-
-
+            'phone'=>'required|string|min:10|max:100',
+        ];
+    }
+    public function messages()
+    {
+        return[
+            'phone.required'=>'電話為必填項目',
+            'phone.min'=>'電話應為十個數字號碼',
         ];
     }
 }

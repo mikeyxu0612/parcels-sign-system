@@ -5,7 +5,8 @@
     包裹管理系統(新增住戶表單)<br><br>
 </h1>
 {!! Form::open(['url'=>'tenants/store']) !!}
- @include('parcels.form',['SubmitButtonText'=>'新增住戶'])
+@include('message.list')
+ @include('tenants.form',['SubmitButtonText'=>'新增住戶'])
 {!! Form::close() !!}
 <a href="/tenants"><b>返回住戶表單</b></a>
 </body>

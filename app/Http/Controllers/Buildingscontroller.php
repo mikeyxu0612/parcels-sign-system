@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\building;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
+/*use Illuminate\Http\Request;*/
+use App\Http\Requests\BuildingRequest;
 
 class Buildingscontroller extends Controller
 {
@@ -50,7 +51,7 @@ class Buildingscontroller extends Controller
         return view('Buildings.edit', ['building' => $building]);
     }
 
-    public function store(Request $request)
+    public function store(BuildingRequest $request)
     {
         $B_Name = $request->input('B_Name');
         $random_datetime = Carbon::now()->subMinutes(rand(1, 55));
@@ -61,7 +62,7 @@ class Buildingscontroller extends Controller
         return redirect('Buildings');
     }
 
-    public function update($id, Request $request)
+    public function update($id, BuildingRequest $request)
     {
         $building = building::findOrFail($id);
 

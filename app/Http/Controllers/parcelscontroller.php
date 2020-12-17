@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\parcel;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
+/*use Illuminate\Http\Request;*/
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\parcelRequest;
 
 class parcelscontroller extends Controller
 {
@@ -90,7 +91,7 @@ class parcelscontroller extends Controller
 
     public function create()
     {
-        
+
         return view('parcels/create');
     }
     public  function show($id)
@@ -104,7 +105,7 @@ class parcelscontroller extends Controller
         $parcel =parcel::findOrFail($id);
         return view('parcels.edit',['parcel'=>$parcel]);
     }
-    public function store(Request $request)
+    public function store(parcelRequest $request)
     {
       $sign=$request->input('sign');
       $sign_proof=$request->input('Sign_proof');
@@ -121,7 +122,7 @@ class parcelscontroller extends Controller
         return redirect('parcels');
     }
 
-    public function update($id,Request $request)
+    public function update($id,parcelRequest $request)
     {
         $parcel = parcel::findOrFail($id);
 

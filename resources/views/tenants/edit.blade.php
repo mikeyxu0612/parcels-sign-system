@@ -5,6 +5,7 @@
     包裹管理系統(修改住戶表單)<br><br>
 </h1>
 {!! Form::model($tenant,['method'=>'PATCH','action'=>['\App\Http\Controllers\tenantscontroller@update',$tenant->id]]) !!}
+@include('message.list')
  @include('tenants.form',['SubmitButtonText'=>'修改住戶']);
 {!! Form::close() !!}
 

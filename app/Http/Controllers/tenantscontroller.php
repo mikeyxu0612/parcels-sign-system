@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\parcel;
 use App\Models\tenant;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
+/*use Illuminate\Http\Request;*/
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\tenantRequest;
 
 class tenantscontroller extends Controller
 {
@@ -103,7 +104,7 @@ class tenantscontroller extends Controller
         $tenant =tenant::findOrFail($id);
         return view('tenants.show',$tenant);
     }
-    public function store(Request $request)
+    public function store(tenantRequest $request)
     {
      $T_name=$request->input('T_name');
      $phone=$request->input('phone');
@@ -120,7 +121,7 @@ class tenantscontroller extends Controller
         return redirect('tenants');
     }
 
-    public function update($id,Request $request)
+    public function update($id,tenantRequest $request)
     {
         $tenant = tenant::findOrFail($id);
 

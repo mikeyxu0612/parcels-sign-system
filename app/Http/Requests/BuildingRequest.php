@@ -25,6 +25,14 @@ class BuildingRequest extends FormRequest
     {
         return [
             //
+            'B_Name'=>'required|string|min:1|max:100',
         ];
     }
+   public function messages()
+   {
+      return[
+        'B_Name.required'=>'樓層為必填',
+          'B_Name.min'=>'至少输入一个子元',
+      ];
+   }
 }
