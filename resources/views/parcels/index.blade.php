@@ -12,8 +12,12 @@
         <th>住址</th>
         <th>簽收與否</th>
         <th>簽收憑證</th>
+        <th>管理員簽收时间</th>
+        <th>簽收时间</th>
+        <th>電話</th>
         <th>操作1</th>
         <th>操作2</th>
+        <th>操作3</th>
     </tr>
     @foreach($parcels as $parcel)
         <tr>
@@ -21,6 +25,9 @@
             <td>{{$parcel->A_ID}}</td>
             <td>{{$parcel->sign }}</td>
             <td>{{$parcel->Sign_proof }}</td>
+            <td>{{$parcel->sign_date}}</td>
+            <td>{{$parcel->sign_time}}</td>
+            <td>{{$parcel->phone}}</td>
             <td><a href="{{route('parcels.show',['id'=>$parcel->id])}}">显示</a></td>
             <td><a href="{{route('parcels.edit',['id'=>$parcel->id])}}">修改</a></td>
             <td>

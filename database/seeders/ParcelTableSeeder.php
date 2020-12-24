@@ -76,6 +76,13 @@ class   ParcelTableSeeder extends Seeder
         }
         return $sign;
     }
+    public function generateRandomphone()
+    {
+        $first_number =$this->generatestring(rand(0,5));
+        $last_number =$this->generatestring(rand(5,9));
+        $phone =$first_number . $last_number;
+        return $phone;
+    }
 
     public function run()
     {
@@ -86,11 +93,17 @@ class   ParcelTableSeeder extends Seeder
             $sign=$this->generateRandomsign();
             $sign_proof=$this->generateRandomsignproof();
             $random_datetime =Carbon::now()->subMinutes(rand(1,55));
+            $phone=$this->generateRandomphone();
+            $sign_date = Carbon::now()->subMonths(rand(0, 12))->subRealDays(rand(0,31));
+            $sign_time = Carbon::now()->subMonths(rand(0, 12))->subRealDays(rand(0,31));
         DB::table('parcels')->insert(
             [
               'A_ID'=>$A_ID,
                'sign'=>$sign,
                 'Sign_proof'=>$sign_proof,
+                'phone'=>$phone,
+                'sign_date'=>$sign_date,
+                'sign_time'=>$sign_time,
                 'created_at'=>$random_datetime,
                 'updated_at'=>$random_datetime,
             ]);

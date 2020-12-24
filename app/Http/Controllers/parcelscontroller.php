@@ -84,7 +84,10 @@ class parcelscontroller extends Controller
                 'parcels.id',
                 'parcels.A_ID',
                 'parcels.sign',
-                'parcels.Sign_proof'
+                'parcels.Sign_proof',
+                'parcels.sign_time',
+                'parcels.sign_date',
+                'parcels.phone',
             )->get();
         return view( 'parcels.index',['parcels'=>$parcels]);
     }

@@ -7,6 +7,18 @@
     {!! Form::text('Sign_proof',null,['class'=>'form-control']) !!}
 </div>
 <div class="form-group">
+    {!! Form::label('sign_date','管理員簽收时间:') !!}
+    {!! Form::date('sign_date',null,['class'=>'form-control']) !!}
+</div>
+<div class="form-group">
+    {!! Form::label('sign_time','簽收时间:') !!}
+    {!! Form::date('sign_time',null,['class'=>'form-control']) !!}
+</div>
+<div class="form-group">
+    {!! Form::label('phone','电话:') !!}
+    {!! Form::text('phone',null,['class'=>'form-control']) !!}
+</div>
+<div class="form-group">
     {!! Form::label('A_ID','簽收人住址(外部鍵):') !!}
     {!! Form::text('A_ID',null,['class'=>'form-control']) !!}
 </div>

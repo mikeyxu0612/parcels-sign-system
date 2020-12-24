@@ -13,6 +13,8 @@ class parcel extends Model
         'sign',
         'sign_time',
         'Sign_proof',
+        'sign_date',
+        'phone',
         'created_at',
         'updated_at'
     ];
@@ -23,7 +25,10 @@ class parcel extends Model
                 'parcels.id',
                 'parcels.A_ID',
                 'parcels.sign',
-                'parcels.Sign_proof'
+                'parcels.Sign_proof',
+                'parcels.sign_date',
+                'parcels.sign_time',
+                'parcels.phone',
             );
     }
 }
