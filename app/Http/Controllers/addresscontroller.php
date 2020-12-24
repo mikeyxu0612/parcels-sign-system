@@ -106,8 +106,8 @@ return view('addresses.edit',['address'=>$address,'buildings'=>$data,'addresses'
 
 public function show($id)
 {
-    $address = address::findOrFail($id)->toArray();
-    return view('addresses.show',$address);
+    $address = address::findOrFail($id);
+    return view('addresses.show',['address'=>$address]);
 }
 
 public function store(addressRequest $request)

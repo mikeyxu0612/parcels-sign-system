@@ -99,8 +99,8 @@ class parcelscontroller extends Controller
     }
     public  function show($id)
     {
-         $parcel =parcel::findOrFail($id)->toArray();
-         return view('parcels.show',$parcel);
+         $parcel =parcel::findOrFail($id);
+         return view('parcels.show',['parcel'=>$parcel]);
     }
 
     public  function edit($id)
