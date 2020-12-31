@@ -102,7 +102,8 @@ class tenantscontroller extends Controller
     public function show($id)
     {
         $tenant =tenant::findOrFail($id);
-        return view('tenants.show',['tenant'=>$tenant]);
+        $parcels=$tenant->parcels;
+        return view('tenants.show',['tenant'=>$tenant,'parcels'=>$parcels]);
     }
     public function store(tenantRequest $request)
     {

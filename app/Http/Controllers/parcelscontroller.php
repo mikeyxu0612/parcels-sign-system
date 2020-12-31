@@ -111,6 +111,9 @@ class parcelscontroller extends Controller
     public function store(parcelRequest $request)
     {
       $sign=$request->input('sign');
+      $sign_date=$request->input('sign_date');
+      $sign_time=$request->input('sign_time');
+      $phone=$request->input('phone');
       $sign_proof=$request->input('Sign_proof');
       $A_ID=$request->input('A_ID');
         $random_datetime = Carbon::now()->subMinutes(rand(1, 55));
@@ -118,6 +121,9 @@ class parcelscontroller extends Controller
         $parcel =parcel::create([
             'A_ID'=>$A_ID,
             'sign'=>$sign,
+            'sign_date'=>$sign_date,
+            'sign_time'=>$sign_time,
+            'phone'=>$phone,
             'Sign_proof'=>$sign_proof,
             'created_at'=>$random_datetime,
             'updated_at'=>$random_datetime,
@@ -132,6 +138,9 @@ class parcelscontroller extends Controller
         $parcel->sign=$request->input('sign');
         $parcel->Sign_proof=$request->input('Sign_proof');
         $parcel->A_ID=$request->input('A_ID');
+        $parcel->sign_date=$request->input('sign_date');
+        $parcel->phone=$request->input('phone');
+        $parcel->sign_time=$request->input('sign_time');
         $parcel->save();
         return redirect('parcels');
 

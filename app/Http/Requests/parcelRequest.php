@@ -29,7 +29,7 @@ class parcelRequest extends FormRequest
             'sign'=>'required|numeric|min:0|max:1',
             'Sign_proof'=>'required|string|min:2|max:100',
             'sign_date'=>'required|dateearlier:sign_time',
-            'sign_time'=>'required',
+            'sign_time'=>'nullable',
             'phone'=>'required|string|min:10|max:100',
         ];
     }
@@ -45,7 +45,6 @@ class parcelRequest extends FormRequest
             'phone.required'=>'電話為必填項目',
             'phone.min'=>'電話應為十個數字號碼',
             'sign_date.required'=>'管理員簽收時間為必填項目',
-            'sign_time.required'=>'簽收時間為必填項目',
             'sign_date.dateearlier'=>'管理員簽收時間必須大於簽收人的簽收時間'
         ];
     }

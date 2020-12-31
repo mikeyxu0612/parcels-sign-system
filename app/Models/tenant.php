@@ -8,22 +8,29 @@ use Illuminate\Database\Eloquent\Model;
 class tenant extends Model
 {
     use HasFactory;
- /*   protected  $table="tenants";*/
-    protected  $fillable=[
+
+    /*   protected  $table="tenants";*/
+    protected $fillable = [
         'T_name',
         'phone',
         'A_ID',
         'created_at',
         'updated_at'
     ];
+
     public function scopeAllData($query)
     {
-        $query ->orderBy('tenants.id')
+        $query->orderBy('tenants.id')
             ->select(
                 'tenants.id',
                 'tenants.T_name',
                 'tenants.phone',
                 'tenants.A_ID'
             );
+    }
+
+    public function parcels()
+    {
+        return $this->hasMany('App\Models\parcel','Sign_proof','T_name');
     }
 }

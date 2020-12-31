@@ -17,15 +17,14 @@ class CreateParcelTable extends Migration
             $table->id()->comment('包裹編號');
             $table->foreignId('A_ID')->unsigned()->comment('住址(外部键)');
             $table->boolean('sign')->comment('簽收與否');
-            $table->date('sign_date')->comment('管理員簽收時間');
-            $table->string('phone')->comment('聯絡電話');
-            $table->date('sign_time')->comment('簽收时间');
+            $table->date('sign_date')->default('2018-01-01')->comment('管理員簽收時間');
+            $table->char('phone')->comment('聯絡電話');
+            $table->date('sign_time')->default('2019-01-01')->comment('簽收时间');
             $table->string('Sign_proof')->comment('簽收憑證');
             $table->foreign('A_ID')->references('id')->on('addresses')->onDelete('cascade');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

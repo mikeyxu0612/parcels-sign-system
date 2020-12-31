@@ -29,13 +29,8 @@ class address extends Model
                 'buildings.B_Name as Bname',
                 'addresses.phone');
     }
-
-   /* public function scopeSenior($query)
+    public function tenants()
     {
-        $query->join()
-            ->where()
-            ->orderBy()
-            ->select(
-               );
-    }*/
+        return $this->hasMany('App\Models\tenant','A_ID','id');
+    }
 }

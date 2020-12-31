@@ -107,7 +107,8 @@ return view('addresses.edit',['address'=>$address,'buildings'=>$data,'addresses'
 public function show($id)
 {
     $address = address::findOrFail($id);
-    return view('addresses.show',['address'=>$address]);
+    $tenants=$address->tenants;
+    return view('addresses.show',['address'=>$address,'tenants'=>$tenants]);
 }
 
 public function store(addressRequest $request)
