@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\parcelscontroller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('register',[AuthController::class,'register']);
+
+Route::post('login',[AuthController::class,'login']);
+
+
+Route::group(['middleware'=>'auth:sanctum'],function (){
+   Route::get('parcels',[parcelscontroller::class,'api_parcels']) ;
+
+    Route::delete('delete',[parcelscontroller::class,'api_delete']);
+
+    Route::patch('update',[parcelscontroller::class,'api_update']);
 });

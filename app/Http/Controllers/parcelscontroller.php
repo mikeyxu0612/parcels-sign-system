@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\parcel;
 use Carbon\Carbon;
-/*use Illuminate\Http\Request;*/
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\parcelRequest;
+use function Composer\Autoload\includeFile;
+
 
 class parcelscontroller extends Controller
 {
@@ -92,9 +94,60 @@ class parcelscontroller extends Controller
         return view( 'parcels.index',['parcels'=>$parcels]);
     }
 
+    public function api_parcels()
+    {
+        return parcel::all();
+    }
+
+    public function api_delete(Request $request)
+    {
+        $parcel=parcel::find($request->input('id'));
+        if($parcel == null)
+        {
+         return response()->json([
+            'status'=>0,
+         ]);
+        }
+
+        if ($parcel->delete())
+        {
+         return response()->json([
+             'status'=>1,
+         ]) ;
+        }
+    }
+
+    public function api_update(Request $request)
+    {
+        $parcel=parcel::find($request->input('id'));
+        if($parcel ==null)
+        {
+            return response()->json([
+                'status'=>0,
+            ]);
+        }
+        $parcel->sign=$request->input('sign');
+        $parcel->Sign_proof=$request->input('Sign_proof');
+        $parcel->A_ID=$request->input('A_ID');
+        $parcel->sign_date=$request->input('sign_date');
+        $parcel->phone=$request->input('phone');
+        $parcel->sign_time=$request->input('sign_time');
+
+        if($parcel->save())
+        {
+            return response()->json([
+                'status'=>1,
+
+            ]);
+        }else{
+         return response()->json([
+             'status'=>0,
+         ]);
+        }
+    }
+
     public function create()
     {
-
         return view('parcels/create');
     }
     public  function show($id)
