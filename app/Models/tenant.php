@@ -31,6 +31,17 @@ class tenant extends Model
 
     public function parcels()
     {
-        return $this->hasMany('App\Models\parcel','Sign_proof','T_name');
+        return $this->hasMany('App\Models\parcel', 'Sign_proof', 'T_name');
+    }
+
+    public function scopeAllAddressID($query)
+    {
+        $query->select('T_name')->groupBy('A_ID');
+    }
+
+    public function scopeAddressID($query, $Adrs)
+    {
+        $query->where('A_ID','=',$Adrs)
+            ->orderBy('id');
     }
 }

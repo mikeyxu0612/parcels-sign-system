@@ -80,3 +80,5 @@ Route::post('tenants/store',[tenantscontroller::class,'store'])->name('tenants.s
 Route::patch('tenants/update/{id}',[tenantscontroller::class,'update'])->where('id','[0-9]+')->name('tenants.update');
 
 Route::delete('tenants/delete/{id}',[tenantscontroller::class, 'destroy'])->where('id','[0-9]+')->name('tenants.destroy');
+
+Route::post('tenants/AddressID',[tenantscontroller::class,'AddressID'])->name('tenants.AddressID');

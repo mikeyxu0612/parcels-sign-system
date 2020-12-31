@@ -6,6 +6,12 @@
 </h1>
 <p style="font-size: 150%"><a href="{{route('tenants.create')}}">新增</a></p>
 <br>
+<form action="tenants/AddressID" method='POST'>
+    {!! Form::label('Adrs', '選取位置：') !!}
+    {!! Form::select('Adrs', $addresses, ['class' => 'form-control']) !!}
+    @csrf
+    <input class="btn btn-default" type="submit" value="查詢" />
+</form>
 <table align="center">
     <tr>
         <th>編號（主鍵)</th>

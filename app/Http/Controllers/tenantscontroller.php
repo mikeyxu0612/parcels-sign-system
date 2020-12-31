@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\parcel;
 use App\Models\tenant;
 use Carbon\Carbon;
-/*use Illuminate\Http\Request;*/
+use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\tenantRequest;
 
@@ -67,7 +68,19 @@ class tenantscontroller extends Controller
     }
     public function index()
     {
-        /*$tenants =tenant::all()->sortBy('id',SORT_ASC);*/
+
+        $addresses =DB::table('addresses')
+            ->orderBy('addresses.id')
+            ->select(
+                'addresses.id',
+                'addresses.address'
+            )->get();
+        $data = [];
+        foreach ($addresses as $address)
+        {
+            $data["$address->id"] = $address->address;
+        }
+
         $tenants =DB::table('tenants')
             ->orderBy('tenants.id')
             ->select(
@@ -76,22 +89,27 @@ class tenantscontroller extends Controller
                 'tenants.phone',
                 'tenants.A_ID'
             )->get();
-        return view('tenants.index',['tenants'=>$tenants]);
+        return view('tenants.index',['tenants'=>$tenants, 'addresses'=>$data]);
     }
+     public function AddressID(Request $request)
+     {
+        $tenants = tenant::AddressID($request->input('Adrs'))->get();
+         $addresses =DB::table('addresses')
+             ->orderBy('addresses.id')
+             ->select(
+                 'addresses.id',
+                 'addresses.address'
+             )->get();
+         $data = [];
+         foreach ($addresses as $address)
+         {
+             $data["$address->id"] = $address->address;
+         }
+       return view('tenants.index',['tenants'=>$tenants,'addresses'=>$data]);
+     }
     public function create()
     {
 
-       /*$T_name=$this->generateRandomTname();
-       $phone=$this->generateRandomphone();
-        $A_ID=rand(0,30);
-        $random_datetime = Carbon::now()->subMinutes(rand(1, 55));
-
-        $tenant =tenant::create([
-            'T_name'=>$T_name,
-            'phone'=>$phone,
-            'A_ID'=>$A_ID,
-        'created_at'=>$random_datetime,
-        'updated_at'=>$random_datetime  ]);*/
         return view('tenants.create');
     }
     public function edit($id)
