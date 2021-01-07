@@ -15,16 +15,11 @@ class tenantscontroller extends Controller
     //
     public function index()
     {
-
-        $addresses =DB::table('addresses')
-            ->orderBy('addresses.id')
-            ->select(
-                'addresses.id',
-            )->get();
+        $addresses = tenant::allAddressID()->get();
         $data = [];
         foreach ($addresses as $address)
         {
-            $data["$address->id"] = $address->id;
+            $data["$address->A_ID"] = $address->A_ID;
         }
 
         $tenants =DB::table('tenants')
@@ -40,19 +35,14 @@ class tenantscontroller extends Controller
 
 
 
-
      public function AddressID(Request $request)
      {
         $tenants = tenant::AddressID($request->input('Adrs'))->get();
-         $addresses =DB::table('addresses')
-             ->orderBy('addresses.id')
-             ->select(
-                 'addresses.id',
-             )->get();
+         $addresses = tenant::allAddressID()->get();
          $data = [];
          foreach ($addresses as $address)
          {
-             $data["$address->id"] = $address->id;
+             $data["$address->A_ID"] = $address->A_ID;
          }
        return view('tenants.index',['tenants'=>$tenants,'addresses'=>$data]);
      }

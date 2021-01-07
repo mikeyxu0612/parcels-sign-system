@@ -36,7 +36,7 @@ class tenant extends Model
 
     public function scopeAllAddressID($query)
     {
-        $query->select('T_name')->groupBy('A_ID');
+        $query->select('A_ID')->groupBy('A_ID');
     }
 
     public function scopeAddressID($query, $Adrs)
