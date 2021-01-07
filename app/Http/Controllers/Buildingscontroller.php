@@ -10,34 +10,19 @@ use App\Http\Requests\BuildingRequest;
 class Buildingscontroller extends Controller
 {
     //
-    public function Randomstring($Length = 10)
-    {
-        $string = array("甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸");
-        $randomstring = '';
-
-        $randomstring .= $string[rand(0, 9)];
-
-        return $randomstring;
-    }
-
     public function index()
     {
         $buildings = building::all()->sortBy('id', SORT_ASC);
         return view('Buildings.index', ['buildings' => $buildings]);
     }
 
+
     public function create()
     {
-        /*  $B_name=$this->Randomstring();
-          $random_datetime = Carbon::now()->subMinutes(rand(1, 55));
-      $building = building::create([
-          'B_name'=>$B_name,
-          'created_at'=>$random_datetime,
-          'updated_at'=>$random_datetime,
-      ]);
-  */
+
         return view('Buildings.create');
     }
+
 
     public function show($id)
     {
@@ -45,11 +30,13 @@ class Buildingscontroller extends Controller
         return view('Buildings.show', ['building'=>$building]);
     }
 
+
     public function edit($id)
     {
         $building = building::findOrFail($id);
         return view('Buildings.edit', ['building' => $building]);
     }
+
 
     public function store(BuildingRequest $request)
     {
@@ -62,6 +49,7 @@ class Buildingscontroller extends Controller
         return redirect('Buildings');
     }
 
+
     public function update($id, BuildingRequest $request)
     {
         $building = building::findOrFail($id);
@@ -71,10 +59,12 @@ class Buildingscontroller extends Controller
         return redirect('Buildings');
     }
 
+
     public function destroy($id)
     {
         $Building = building::findOrFail($id);
         $Building->delete();
         return redirect('Buildings');
     }
+
 }
