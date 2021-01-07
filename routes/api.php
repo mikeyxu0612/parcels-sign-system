@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\addresscontroller;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Buildingscontroller;
 use App\Http\Controllers\parcelscontroller;
+use App\Http\Controllers\tenantscontroller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,9 +25,32 @@ Route::post('login',[AuthController::class,'login']);
 
 
 Route::group(['middleware'=>'auth:sanctum'],function (){
-   Route::get('parcels',[parcelscontroller::class,'api_parcels']) ;
+    Route::get('parcels',[parcelscontroller::class,'api_parcels']) ;
 
-    Route::delete('delete',[parcelscontroller::class,'api_delete']);
+    Route::delete('parcels',[parcelscontroller::class,'api_delete']);
 
-    Route::patch('update',[parcelscontroller::class,'api_update']);
+    Route::patch('parcels',[parcelscontroller::class,'api_update']);
+
+
+
+    Route::get('tenants',[tenantscontroller::class,'api_tenants']);
+
+    Route::delete('tenants',[tenantscontroller::class,'api_delete']);
+
+    Route::patch('tenants',[tenantscontroller::class,'api_update']);
+
+
+
+    Route::get('addresses',[addresscontroller::class,'api_addresses']);
+
+    Route::delete('addresses',[addresscontroller::class,'api_delete']);
+
+    Route::patch('addresses',[addresscontroller::class,'api_addresses']);
+
+
+    Route::get('Buildings',[Buildingscontroller::class,'api_Buildings']);
+
+    Route::delete('Buildings',[Buildingscontroller::class,'api_delete']);
+
+    Route::patch('Buildings',[Buildingscontroller::class,'api_Buildings']);
 });
