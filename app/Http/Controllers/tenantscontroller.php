@@ -112,4 +112,51 @@ class tenantscontroller extends Controller
         $tenant->delete();
         return redirect('tenants');
     }
+
+
+    public function api_tenants()
+    {
+      return tenant::all();
+    }
+
+
+    public function api_delete(Request $request)
+    {
+        $tenant = tenant::find($request->input('id'));
+
+        if ($tenant == null)
+        {
+            return response()->json([
+                'status' => 0,
+            ]);
+        }
+
+        if ($tenant->delete())
+        {
+            return response()->json([
+                'status' => 1,
+            ]);
+        }
+    }
+
+
+    public function api_update(Request $request)
+    {
+        $tenant =tenant::find($request->input('id'));
+          if($tenant == null)
+          {
+              return response()->json(['status'=>0,]);
+          }
+        $tenant->T_name=$request->input('T_name');
+        $tenant->phone=$request->input('phone');
+        $tenant->A_ID=$request->input('A_ID');
+        if($tenant->save())
+        {
+            return response()->json(['status'=>1,]);
+        }else{
+            return response()->json(['status'=>0,]);
+        }
+    }
+
+
 }

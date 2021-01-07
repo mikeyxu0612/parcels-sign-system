@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\address;
 use Carbon\Carbon;
-/*use Illuminate\Http\Request;*/
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\addressRequest;
 class addresscontroller extends Controller
@@ -56,7 +56,7 @@ class addresscontroller extends Controller
 
 
   public function edit($id)
-{
+ {
     $buildings=DB::table('buildings')
         ->select('buildings.id','buildings.B_Name')
         ->orderBy('buildings.id','asc')
@@ -87,17 +87,17 @@ return view('addresses.edit',['address'=>$address,'buildings'=>$data,'addresses'
 
 
 
-public function show($id)
-{
+ public function show($id)
+ {
     $address = address::findOrFail($id);
     $tenants=$address->tenants;
     return view('addresses.show',['address'=>$address,'tenants'=>$tenants]);
-}
+ }
 
 
 
-public function store(addressRequest $request)
-{
+ public function store(addressRequest $request)
+ {
 
  $address=$request->input('address');
  $B_ID=$request->input('B_ID');
@@ -112,13 +112,13 @@ public function store(addressRequest $request)
      'updated_at'=>$random_datetime
  ]);
 return redirect('addresses');
-}
+ }
 
 
 
 
-public function update($id,addressRequest $request)
-{
+ public function update($id,addressRequest $request)
+ {
 
     $address = address::findOrFail($id);
 
@@ -127,16 +127,63 @@ public function update($id,addressRequest $request)
     $address->phone = $request->input('phone');
     $address->save();
     return redirect('addresses');
-}
+ }
 
 
 
-public function destroy($id)
-{
+ public function destroy($id)
+ {
     $address = address::findOrFail($id);
     $address->delete();
     return redirect('addresses');
-}
+ }
+
+
+ public function api_addresses()
+ {
+    return address::all();
+ }
+
+
+  public function api_delete(Request $request)
+  {
+      $address =address::find($request->input('id'));
+      if($address == null)
+      {
+          return response()->json([
+              'status'=>0,
+          ]);
+      }
+
+      if ($address->delete())
+      {
+          return response()->json([
+              'status'=>1,
+          ]) ;
+      }
+  }
+
+
+
+  public function api_update(Request $request)
+  {
+      $address =address::find($request->input('id'));
+      if($address == null)
+      {
+        return response()->json([
+            'status'=> 0,
+        ]) ;
+      }
+      $address->address = $request->input('address');
+      $address->B_ID = $request->input('B_ID');
+      $address->phone = $request->input('phone');
+      if($address->save())
+      {
+          return response()->json(['status'=>1,]);
+      }else{
+          return response()->json(['status'=>0,]);
+      }
+  }
 
 
 }

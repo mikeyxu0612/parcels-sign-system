@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\building;
 use Carbon\Carbon;
-/*use Illuminate\Http\Request;*/
+use Illuminate\Http\Request;
 use App\Http\Requests\BuildingRequest;
+
 
 class Buildingscontroller extends Controller
 {
@@ -66,5 +67,46 @@ class Buildingscontroller extends Controller
         $Building->delete();
         return redirect('Buildings');
     }
+
+
+   public function api_Buildings()
+   {
+       return building::all();
+   }
+
+
+   public function api_delete(Request $request)
+   {
+       $building = building::find($request->input('id'));
+
+       if($building == null)
+       {
+           return response()->json(['status'=>0,]);
+
+       }
+
+       if($building->delete())
+       {
+           return  response()->json(['status'=>1,]);
+       }
+   }
+
+
+   public function api_update(Request $request)
+   {
+    $building = building::find($request->input('id'));
+       if ($building == null)
+       {
+           return response()->json(['status'=>0,]);
+       }
+       $building->B_Name = $request->input('B_Name');
+       if($building->save())
+       {
+           return  response()->json(['status'=>1,]);
+       }else{
+           return  response()->json(['status'=>0,]);
+       }
+   }
+
 
 }
