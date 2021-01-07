@@ -33,4 +33,5 @@ class address extends Model
     {
         return $this->hasMany('App\Models\tenant','A_ID','id');
     }
+
 }
