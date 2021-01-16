@@ -23,6 +23,7 @@ Route::post('register',[AuthController::class,'register']);
 
 Route::post('login',[AuthController::class,'login']);
 
+Route::get('https://api.nlsc.gov.tw/other/ListCounty');
 
 Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::get('parcels',[parcelscontroller::class,'api_parcels']) ;
